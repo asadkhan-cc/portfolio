@@ -1,11 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import Header from "../src/component/Header";
+import Hero from "../src/component/Hero";
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div className="">
       <Head>
         <title>Asad Khan Portfolio</title>
         <meta
@@ -14,22 +15,43 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <main className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-scroll z-0">
+        <Header />
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to my portfolio</h1>
+        {/* hero */}
+        <section id="hero" className="snap-center">
+          <Hero />
+        </section>
+
+        {/* about */}
+
+        {/* experience */}
+
+        {/* skills */}
+
+        {/* projects */}
+
+        {/* contact me */}
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+      <footer className="fixed bottom-0 right-1/2  translate-x-1/2 ">
+        <div className=" w-full mx-auto">
+          <a
+            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Powered by Asad{" "}
+            <span className="">
+              <Image
+                src="/vercel.svg"
+                alt="Vercel Logo"
+                width={72}
+                height={16}
+              />
+            </span>
+          </a>
+        </div>
       </footer>
     </div>
   );
