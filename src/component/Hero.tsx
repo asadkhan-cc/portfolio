@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackGroundCircles from "./BackGroundCircles";
-import asad from "/public/asad.jpg";
+import heroImage from "/public/asad.jpg";
 type Props = {};
 
 function Hero({}: Props) {
@@ -19,7 +20,7 @@ function Hero({}: Props) {
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden ">
       <BackGroundCircles />
       <Image
-        src={asad}
+        src={heroImage}
         width="175px"
         height="175px"
         className="rounded-full object-cover"
@@ -32,6 +33,23 @@ function Hero({}: Props) {
         <span className="mr-3">{words}</span>
         <Cursor cursorColor="#F7AB0a" />
       </h1>
+      <div className="z-10">
+        <Link href="#About">
+          <button className="heroButton">About</button>
+        </Link>
+        <Link href="#Experience">
+          <button className="heroButton">Experience</button>
+        </Link>
+        <Link href="#Skills">
+          <button className="heroButton">Skills</button>
+        </Link>
+        <Link href="#Projects">
+          <button className="heroButton">Projects</button>
+        </Link>
+        <Link href="#button">
+          <button className="heroButton"></button>
+        </Link>
+      </div>
     </div>
   );
 }
