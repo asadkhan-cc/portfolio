@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import About from "../src/component/About";
 import ContactSection from "../src/component/ContactSection";
 import ExperienceCards from "../src/component/ExperienceCards";
@@ -20,7 +21,10 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-scroll z-30 ">
+      <main
+        className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-30 
+      scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80"
+      >
         <Header />
 
         {/* hero */}
@@ -51,23 +55,22 @@ const Home: NextPage = () => {
         </section>
       </main>
 
-      <footer className="fixed bottom-0 right-1/2  translate-x-1/2 ">
+      <footer className="fixed bottom-0 right-1/2 cursor-pointer  translate-x-1/2 ">
         <div className=" w-full mx-auto">
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by Asad{" "}
-            <span className="">
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                width={72}
-                height={16}
-              />
-            </span>
-          </a>
+          <Link href="#hero">
+            <div className="flex items-center">
+              <span>Powered by Asad </span>
+              <span className="">
+                <Image
+                  src="/ASADEnterpriseLOGO-01.png"
+                  alt="Asad Logo"
+                  width={50}
+                  height={50}
+                  className="object-contain"
+                />
+              </span>
+            </div>
+          </Link>
         </div>
       </footer>
     </div>

@@ -6,7 +6,7 @@ type Props = {
   key?: number;
   Index?: number;
   Length?: number;
-  Data?: object;
+  Data?: any;
 };
 
 function Project({ Index, Length, Data }: Props) {

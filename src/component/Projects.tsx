@@ -11,7 +11,7 @@ const Projects = ({}: Props) => {
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
         projects
       </h3>
-      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap snap-x snap-mandatory z-20">
+      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
         {proj.map((elem, index, arr) => {
           return <Project key={index} Index={index + 1} Length={arr.length} />;
         })}
