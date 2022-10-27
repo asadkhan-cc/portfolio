@@ -2,6 +2,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import React from "react";
 import pic from "/public/ASADEnterpriseLOGO-01.png";
+import { Project } from "../../typings";
+import { urlFor } from "../../sanity";
 type Props = {
   key?: number;
   Index?: number;
@@ -9,7 +11,10 @@ type Props = {
   Data?: any;
 };
 
-function Project({ Index, Length, Data }: Props) {
+function ProjectCard({ Index, Length, Data }: Props) {
+  const imageRef = urlFor(Data?.image);
+  imageRef.options.baseUrl = "cdn.sanity.io/images/";
+  console.log(imageRef);
   return (
     <>
       <div className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen ">
@@ -20,7 +25,7 @@ function Project({ Index, Length, Data }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
         >
           <Image
-            src={pic}
+            src={imageRef.url()}
             width="100px"
             height="100px"
             alt="Case Study Image"
@@ -34,14 +39,12 @@ function Project({ Index, Length, Data }: Props) {
               Case Study {Index} of {Length}
             </span>
             {" : "}
-            <span className="font-bold">
+            <span className="font-bold text-[#F7AB0A]">
               {Data?.title ? Data?.title : "Title"}
             </span>
           </h4>
           <p className="text-lg text-center md:text-left">
-            {Data?.Summary
-              ? Data?.Summary
-              : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis praesentium odio dolorem aut atque id, error fuga maiores magnam. Quaerat id exercitationem minus accusamus voluptatem voluptatibus laboriosam dolorem molestias deleniti!"}
+            {Data?.summary ? Data?.summary : "No Desc Given"}
           </p>
         </div>
       </div>
@@ -49,4 +52,4 @@ function Project({ Index, Length, Data }: Props) {
   );
 }
 
-export default Project;
+export default ProjectCard;

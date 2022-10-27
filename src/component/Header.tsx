@@ -2,9 +2,12 @@ import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
-type Props = {};
+import { Social } from "../../typings";
+type Props = {
+  social: Social[];
+};
 
-function Header({}: Props) {
+function Header({ social }: Props) {
   return (
     <header className="">
       <div className="flex flex-row justify-around flex-grow max-w-7xl mx-auto z-30 p-5 absolute top-0 ">
@@ -15,27 +18,17 @@ function Header({}: Props) {
             transition={{ duration: 1.5 }}
             className="flex flex-row items-center "
           >
-            <SocialIcon
-              url="https://www.youtube.com/channel/UCY6cJbcuRWgtjiJy6yjfb5A"
-              fgColor="gray"
-              bgColor="transparent"
-            ></SocialIcon>
-
-            <SocialIcon
-              url="https://www.youtube.com/channel/UCY6cJbcuRWgtjiJy6yjfb5A"
-              fgColor="gray"
-              bgColor="transparent"
-            ></SocialIcon>
-            <SocialIcon
-              url="https://www.youtube.com/channel/UCY6cJbcuRWgtjiJy6yjfb5A"
-              fgColor="gray"
-              bgColor="transparent"
-            ></SocialIcon>
-            <SocialIcon
-              url="https://www.youtube.com/channel/UCY6cJbcuRWgtjiJy6yjfb5A"
-              fgColor="gray"
-              bgColor="transparent"
-            ></SocialIcon>
+            {social.map((social) => {
+              return (
+                <SocialIcon
+                  key={social._id}
+                  url={social.url}
+                  title={social.title}
+                  fgColor="gray"
+                  bgColor="transparent"
+                />
+              );
+            })}
           </motion.div>
         </div>
         <div>

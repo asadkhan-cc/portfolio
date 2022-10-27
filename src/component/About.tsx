@@ -2,10 +2,13 @@ import React from "react";
 import aboutImage from "/public/as3.jpeg";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { PageInfo } from "../../typings";
+import { urlFor } from "../../sanity";
 
-type Props = {};
-
-const About = (props: Props) => {
+type Props = {
+  pageInfo: PageInfo;
+};
+const About = ({ pageInfo }: Props) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -28,32 +31,24 @@ const About = (props: Props) => {
           viewport={{ once: true }}
           className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 md:w-64 md:h-96 xl:w-[400px] xl:h-[500px]   "
         >
-          <Image
-            src={aboutImage}
-            alt="AboutImage"
-            className="rounded-full object-cover md:rounded-lg "
-          ></Image>
+          {/* Provided "contain" should be one of fill,fixed,intrinsic,responsive,undefined. */}
+          <div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={urlFor(pageInfo?.profilePic)}
+              alt="AboutImage"
+              className="rounded-full object-cover md:rounded-lg "
+            ></img>
+          </div>
         </motion.div>
         <div className="space-y-10 px-0 md:p-10 mt-28 md:mt-0 ">
           <h4 className="text-4xl font-semibold">
-            Here Is A{" "}
-            <span className="underline decoration-[#F7AB0A]/50">little</span>{" "}
-            Background!
+            Here Is A little{" "}
+            <span className="underline decoration-[#F7AB0A]/50">
+              Background!
+            </span>
           </h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-            asperiores eum molestias nobis, voluptas perferendis nulla
-            reprehenderit, voluptatibus, quidem laborum ab earum quibusdam
-            corrupti veritatis deleniti inventore commodi con Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Non asperiores eum molestias
-            nobis, voluptas perferendis nulla reprehenderit, voluptatibus,
-            quidem laborum ab earum quibusdam corrupti veritatis deleniti
-            inventore commodi con Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Non asperiores eum molestias nobis, voluptas
-            perferendis nulla reprehenderit, voluptatibus, quidem laborum ab
-            earum quibusdam corrupti veritatis deleniti inventore commodi
-            consequuntur corporis!
-          </p>
+          <p>{pageInfo?.backgroundInformation}</p>
         </div>
       </div>
     </motion.div>

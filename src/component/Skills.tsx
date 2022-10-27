@@ -1,10 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Skill from "./Skill";
+import SkillImage from "./SkillImage";
+import { Skill } from "../../typings";
 
-type Props = {};
+type Props = {
+  skills: Skill[];
+};
 
-function Skills({}: Props) {
+function Skills({ skills }: Props) {
   return (
     <motion.article
       initial={{ opacity: 0 }}
@@ -19,17 +22,15 @@ function Skills({}: Props) {
         hover Over a skill for currency proficiency
       </h3>
       <div className="grid grid-cols-4 gap-5">
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
-        <Skill />
+        {skills.map((elem, index) => {
+          return (
+            <SkillImage
+              key={index}
+              data={elem}
+              directionLeft={index % 2 === 0 ? true : false}
+            />
+          );
+        })}
       </div>
     </motion.article>
   );

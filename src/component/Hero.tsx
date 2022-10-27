@@ -2,13 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import { urlFor } from "../../sanity";
+import { PageInfo } from "../../typings";
 import BackGroundCircles from "./BackGroundCircles";
 import heroImage from "/public/asad.jpg";
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-function Hero({}: Props) {
+function Hero({ pageInfo }: Props) {
   const [words] = useTypewriter({
-    words: [" Developer.", " Learner.", " Coder.", " SelfBeliever."],
+    words: [
+      `HI! ${pageInfo.name} Here`,
+      " Developer.",
+      " Learner.",
+      " Coder.",
+      " SelfBeliever.",
+    ],
     loop: 0,
     delaySpeed: 1000,
     typeSpeed: 80,
@@ -20,14 +30,14 @@ function Hero({}: Props) {
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden ">
       <BackGroundCircles />
       <Image
-        src={heroImage}
+        src={urlFor(pageInfo?.heroImage).url()}
         width="175px"
         height="175px"
         className="rounded-full object-cover"
         alt="Profile Picture Asad Ali Khan"
       ></Image>
       <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">
-        Software Engineer
+        {pageInfo?.role}
       </h2>
       <h1 className="text-5xl lg:text-6xl font-semibold px-10">
         <span className="mr-3">{words}</span>

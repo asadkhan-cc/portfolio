@@ -1,5 +1,5 @@
 export default {
-  name: "Social",
+  name: "social",
   title: "Social",
   type: "document",
   fields: [
