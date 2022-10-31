@@ -8,6 +8,7 @@ type Props = {
 };
 
 const Projects = ({ projects }: Props) => {
+  console.log(projects[0], "projectsprojectsprojectsprojectsprojects");
   return (
     <article className="h-screen flex flex-col relative text-left md:flex-row max-w-full px-10 justify-evenly mx-auto items-center">
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
@@ -20,11 +21,10 @@ const Projects = ({ projects }: Props) => {
               key={index}
               Index={index + 1}
               Length={arr.length}
-              Data={elem}
+              projectData={elem}
             />
           );
         })}
-        <ProjectCard />
       </div>
       <div className="w-full absolute top-[30%] bg-[#F7AB0A]/10 left-0 h-[500px] -skew-y-12"></div>
     </article>

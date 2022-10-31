@@ -10,6 +10,11 @@ type Props = {
 };
 
 function ExpCard({ data }: Props) {
+  // console.log(
+  //   data,
+  //   "urlFor(data?.companyImage).url()",
+  //   "urlFor(data?.companyImage)"
+  // );
   return (
     <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[400px] md:w-[500px] xl:w-[600px] min-w-max snap-center bg-[#292929] p-10 opacity-40 hover:opacity-100 cursor-pointer transition-opacity duration-200 overflow-hidden">
       <motion.div

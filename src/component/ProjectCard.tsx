@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import pic from "/public/ASADEnterpriseLOGO-01.png";
 import { Project } from "../../typings";
 import { urlFor } from "../../sanity";
@@ -8,13 +8,12 @@ type Props = {
   key?: number;
   Index?: number;
   Length?: number;
-  Data?: any;
+  projectData?: Project;
 };
 
-function ProjectCard({ Index, Length, Data }: Props) {
-  const imageRef = urlFor(Data?.image);
-  imageRef.options.baseUrl = "cdn.sanity.io/images/";
-  console.log(imageRef);
+function ProjectCard({ Index, Length, projectData }: Props) {
+  const imageRef = urlFor(projectData?.image);
+
   return (
     <>
       <div className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen ">
@@ -25,7 +24,7 @@ function ProjectCard({ Index, Length, Data }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
         >
           <Image
-            src={imageRef.url()}
+            src={urlFor(projectData?.image).width(500).height(300).url()}
             width="100px"
             height="100px"
             alt="Case Study Image"
@@ -40,11 +39,11 @@ function ProjectCard({ Index, Length, Data }: Props) {
             </span>
             {" : "}
             <span className="font-bold text-[#F7AB0A]">
-              {Data?.title ? Data?.title : "Title"}
+              {projectData?.title ? projectData?.title : "Title"}
             </span>
           </h4>
           <p className="text-lg text-center md:text-left">
-            {Data?.summary ? Data?.summary : "No Desc Given"}
+            {projectData?.summary ? projectData?.summary : "No Desc Given"}
           </p>
         </div>
       </div>
